@@ -163,7 +163,7 @@ def convert_from_path(
         thread_page_count = page_count // thread_count + int(reminder > 0)
         # Build the command accordingly
         args = _build_command(
-            ["-r", str(dpi), pdf_path],
+            ["-r", str(dpi)],
             output_folder,
             current_page,
             current_page + thread_page_count - 1,
@@ -179,6 +179,7 @@ def convert_from_path(
             size,
             hide_annotations,
         )
+        args.extend([pdf_path, '-'])
 
         if use_pdfcairo:
             if hide_annotations:
